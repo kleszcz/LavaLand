@@ -8,6 +8,7 @@ extends Sprite
 onready var Wall = preload("res://Wall/Wall.tscn")
 
 export var hit = Vector2(0,0)
+var inventory = 3
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -26,9 +27,16 @@ func _physics_process(delta):
 func _process(delta):
 	var mouse = self.get_global_mouse_position()
 	self.position = mouse
-	if Input.is_action_pressed("place_wall"):
+	if Input.is_action_just_pressed("place_wall") and inventory > 0:
 		var w = Wall.instance()
 		w.position = self.position
+		inventory -= 1
 		get_tree().get_root().add_child(w)
 	update()
 	pass
+
+
+func _on_new_resource():
+	inventory += 1
+	print("adding resource")
+	pass # Replace with function body.
