@@ -3,9 +3,32 @@
 [ext_resource path="res://Flooder/Flooder.gd" type="Script" id=1]
 [ext_resource path="res://Flooder/lava.png" type="Texture" id=2]
 
-[node name="Flooder" type="Polygon2D" groups=["GameOverListeners"]]
+[node name="Flooder" type="Node2D" groups=["GameOverListeners"]]
+
+[node name="hot" type="Polygon2D" parent="." groups=["GameOverListeners"]]
 texture = ExtResource( 2 )
-polygon = PoolVector2Array( 0, 0, 0, 10, 10, 10 )
-uv = PoolVector2Array( 0, 0, 0, 0.5, 0.5, 0.5 )
+polygon = PoolVector2Array( 0, 0, 5, -2, 10, 0, 12, 5, 10, 10, 5, 12, 0, 10, -2, 5 )
+uv = PoolVector2Array( 0, 0, 5, -2, 5, 5, 12, 5, 10, 10, 5, 12, 0, 10, -2, 5 )
 script = ExtResource( 1 )
-grow_rate = 5.0
+max_point_dist = 15.0
+
+[node name="Area2D" type="Area2D" parent="hot"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="hot/Area2D"]
+
+[node name="cold" type="Polygon2D" parent="." groups=["GameOverListeners"]]
+color = Color( 0, 0, 0, 0.92549 )
+polygon = PoolVector2Array( 0, 0, 5, -2, 10, 0, 12, 5, 10, 10, 5, 12, 0, 10, -2, 5 )
+uv = PoolVector2Array( 0, 0, 5, -2, 5, 5, 12, 5, 10, 10, 5, 12, 0, 10, -2, 5 )
+script = ExtResource( 1 )
+max_point_dist = 15.0
+grow_rate = 1.5
+
+[node name="Area2D" type="Area2D" parent="cold"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="cold/Area2D"]
+
+[connection signal="mouse_entered" from="hot/Area2D" to="." method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_exited" from="hot/Area2D" to="." method="_on_Area2D_mouse_exited"]
+[connection signal="mouse_entered" from="cold/Area2D" to="." method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_exited" from="cold/Area2D" to="." method="_on_Area2D_mouse_exited"]

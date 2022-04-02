@@ -1,5 +1,5 @@
 extends Polygon2D
-
+class_name Flooder
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -10,6 +10,7 @@ export var grow_rate = 2.0
 var run = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Area2D/CollisionPolygon2D.polygon = self.polygon
 	pass # Replace with function body.
 
 
@@ -68,8 +69,22 @@ func _physics_process(delta):
 		
 	self.polygon = polygon
 	self.uv = uv
+	$Area2D/CollisionPolygon2D.polygon = self.polygon
+	
 	pass
 	
 func on_game_over():
 	run = false
 	pass
+
+
+func _on_Area2D_mouse_entered():
+	$"/root/Globals".mouse_owners += 1
+	print("I have mouse!")
+	pass # Replace with function body.
+
+
+func _on_Area2D_mouse_exited():
+	$"/root/Globals".mouse_owners -= 1
+	print("I have lost mouse :(")
+	pass # Replace with function body.

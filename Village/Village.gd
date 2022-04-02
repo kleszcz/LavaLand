@@ -5,6 +5,7 @@ class_name Village
 # var a = 2
 # var b = "text"
 
+onready var plus = preload("res://Village/plus.tscn")
 var onfire = false
 var destroyed = false
 # Called when the node enters the scene tree for the first time.
@@ -35,6 +36,11 @@ func _on_Timer_timeout():
 #	self.queue_free()
 
 
-func _on_Timer_turn():
+func _on_turn():
+	if destroyed:
+		return
 	get_tree().call_group("ResourceUsers", "_on_new_resource")
+	var p = plus.instance()
+	p.position = $PlusStart.position
+	self.add_child(p)
 	pass # Replace with function body.

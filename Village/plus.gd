@@ -1,11 +1,10 @@
-extends StaticBody2D
-class_name WallBase
+extends Node2D
+class_name plus
 
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-
-export var hp = 10;
+export var speed = 20
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,13 +12,11 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	self.position.y -= delta * speed
+	pass
 
-func damage(value):
-	$Sprite.animation = "fire"
-	hp -= value;
-	if hp <= 0:
-		$Sprite.animation = "burned"
-		$CollisionShape2D.disabled = true
-	
+
+func _on_Timer_timeout():
+	self.queue_free()
+	pass # Replace with function body.

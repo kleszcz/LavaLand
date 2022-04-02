@@ -7,7 +7,7 @@ extends Control
 var time = 0.0
 export var period = 3.0
 var fired = 0
-signal turn
+
 var run = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,7 +23,7 @@ func _process(delta):
 	if time > (fired+1)*period:
 		print("Ping!")
 		fired+=1
-		emit_signal("turn")
+		get_tree().call_group("ResourceProducers", "_on_turn")
 	$MarginContainer/CenterContainer/Label.text = format_time(time)
 	pass
 
