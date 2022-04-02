@@ -1,0 +1,119 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Flooder/Flooder.tscn" type="PackedScene" id=2]
+[ext_resource path="res://main_level/Sprite.gd" type="Script" id=4]
+[ext_resource path="res://Wall/Wall.tscn" type="PackedScene" id=5]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 403.256, 122.674, -66, -55, 66, 55, 323, 225, -92, 36, 92, -36, 535, 266, -58, 39, 58, -39, 576, 175, 131, -125, -131, 125, 726, 276 )
+}
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 163.988, 10 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaticBody2D" parent="." instance=ExtResource( 5 )]
+position = Vector2( 2, -25 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -123, -75 )
+scale = Vector2( 0.328125, 0.328125 )
+texture = ExtResource( 1 )
+script = ExtResource( 4 )
+
+[node name="Path2D" type="Path2D" parent="."]
+visible = false
+position = Vector2( -551.217, -345.254 )
+scale = Vector2( 0.474183, 0.809086 )
+curve = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="Flooder" parent="." instance=ExtResource( 2 )]
+
+[node name="StaticBody2D2" parent="." instance=ExtResource( 5 )]
+position = Vector2( -1, 28 )
+
+[node name="StaticBody2D3" parent="." instance=ExtResource( 5 )]
+position = Vector2( -26, 1 )
+
+[node name="StaticBody2D4" parent="." instance=ExtResource( 5 )]
+position = Vector2( 32, 3 )
+
+[node name="WallBase" parent="." instance=ExtResource( 5 )]
+position = Vector2( 36, 36 )
+
+[node name="Flooder2" parent="." instance=ExtResource( 2 )]
+position = Vector2( -84, 28 )
+color = Color( 0.886275, 0.0784314, 0.0784314, 1 )
+
+[node name="Flooder3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 128, 74 )
+color = Color( 0.956863, 0.898039, 0.0313726, 1 )
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="."]
+position = Vector2( -72, -111 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D5"]
+position = Vector2( 73, 0 )
+shape = SubResource( 2 )
+
+[node name="StaticBody2D12" type="StaticBody2D" parent="."]
+position = Vector2( 139, -51 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D12"]
+position = Vector2( 73, 0 )
+shape = SubResource( 2 )
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="."]
+position = Vector2( -169, -63 )
+rotation = 1.57274
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D6"]
+position = Vector2( 73, 0 )
+shape = SubResource( 2 )
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="."]
+position = Vector2( 171, -73 )
+rotation = 1.57274
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D8"]
+position = Vector2( 73, 0 )
+shape = SubResource( 2 )
+
+[node name="StaticBody2D9" type="StaticBody2D" parent="."]
+position = Vector2( 95, 74 )
+rotation = 1.57274
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D9"]
+position = Vector2( 73, 0 )
+shape = SubResource( 2 )
+
+[node name="StaticBody2D10" type="StaticBody2D" parent="."]
+position = Vector2( -106, 82 )
+rotation = 1.57274
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D10"]
+position = Vector2( 73, 0 )
+shape = SubResource( 2 )
+
+[node name="StaticBody2D11" type="StaticBody2D" parent="."]
+position = Vector2( 10, -296 )
+rotation = 1.57274
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D11"]
+position = Vector2( 73, 0 )
+shape = SubResource( 2 )
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="."]
+position = Vector2( -152, 111 )
+rotation = -0.00935137
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D7"]
+position = Vector2( 153.988, 0 )
+scale = Vector2( 1, 1 )
+shape = SubResource( 2 )
