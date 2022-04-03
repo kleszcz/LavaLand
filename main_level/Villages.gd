@@ -17,7 +17,12 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+# func _process(delta):
+# 	if Input.is_action_just_pressed("debug_kill"):
+# 		villages = 1
+# 		_on_Village_destroyed()
+# 	pass
 
 func _on_Village_destroyed():
 	villages -= 1
@@ -25,4 +30,3 @@ func _on_Village_destroyed():
 		print("GAME OVER!")
 		get_tree().call_group("GameOverListeners", "on_game_over")
 	pass # Replace with function body.
-

@@ -23,6 +23,7 @@ func destroy():
 		return
 	onfire = true
 	$AnimatedSprite.animation = "fire"
+	$Burning.play()
 	$Timer.start(5)
 	
 func _on_Timer_timeout():
@@ -42,5 +43,6 @@ func _on_turn():
 	get_tree().call_group("ResourceUsers", "_on_new_resource")
 	var p = plus.instance()
 	p.position = $PlusStart.position
+	$NewResource.play()
 	self.add_child(p)
 	pass # Replace with function body.

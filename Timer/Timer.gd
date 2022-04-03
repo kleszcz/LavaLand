@@ -24,7 +24,7 @@ func _process(delta):
 		print("Ping!")
 		fired+=1
 		get_tree().call_group("ResourceProducers", "_on_turn")
-	$MarginContainer/CenterContainer/Label.text = format_time(time)
+	$Label.text = format_time(time)
 	pass
 
 const digit_format = "%02d"

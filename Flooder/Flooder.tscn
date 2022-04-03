@@ -1,7 +1,29 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Flooder/Flooder.gd" type="Script" id=1]
 [ext_resource path="res://Flooder/lava.png" type="Texture" id=2]
+[ext_resource path="res://Flooder/lava.wav" type="AudioStream" id=3]
+[ext_resource path="res://Flooder/vulcano.png" type="Texture" id=4]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 4 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 4 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="Flooder" type="Node2D" groups=["GameOverListeners"]]
 
@@ -15,6 +37,17 @@ max_point_dist = 15.0
 [node name="Area2D" type="Area2D" parent="hot"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="hot/Area2D"]
+
+[node name="Sound" type="AudioStreamPlayer" parent="hot"]
+stream = ExtResource( 3 )
+volume_db = -6.0
+autoplay = true
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 5, -1 )
+scale = Vector2( 0.59375, 0.59375 )
+frames = SubResource( 4 )
+playing = true
 
 [connection signal="mouse_entered" from="hot/Area2D" to="hot" method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_exited" from="hot/Area2D" to="hot" method="_on_Area2D_mouse_exited"]

@@ -1,7 +1,10 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Player/Player.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
+[ext_resource path="res://Player/place_wall.wav" type="AudioStream" id=3]
+[ext_resource path="res://Player/blocked.wav" type="AudioStream" id=4]
+[ext_resource path="res://Player/empty.wav" type="AudioStream" id=5]
 
 [sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 1 )
@@ -58,7 +61,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=18]
-extents = Vector2( 8, 8 )
+extents = Vector2( 8, 5 )
 
 [node name="Player" type="Node2D" groups=["ResourceUsers"]]
 script = ExtResource( 2 )
@@ -70,4 +73,15 @@ animation = "ok"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 3 )
 shape = SubResource( 18 )
+
+[node name="PlaceSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="BlockedSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="EmptySound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = 6.32

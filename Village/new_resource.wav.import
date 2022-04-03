@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/new_resource.wav-b84bb9ffae25c1ebaf6fcbf18c0e7705.sample"
+
+[deps]
+
+source_file="res://Village/new_resource.wav"
+dest_files=[ "res://.import/new_resource.wav-b84bb9ffae25c1ebaf6fcbf18c0e7705.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

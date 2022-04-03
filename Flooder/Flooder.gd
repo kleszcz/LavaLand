@@ -11,6 +11,7 @@ var run = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Area2D/CollisionPolygon2D.polygon = self.polygon
+	$Sound
 	pass # Replace with function body.
 
 
@@ -75,6 +76,7 @@ func _physics_process(delta):
 	
 func on_game_over():
 	run = false
+	$Sound.stop()
 	pass
 
 
