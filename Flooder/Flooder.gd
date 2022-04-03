@@ -41,7 +41,7 @@ func _physics_process(delta):
 		var result = space_state.intersect_ray(self.to_global(polygon[i]), self.to_global(point))
 		if result.empty():
 			polygon[i] = point
-			uv[i] += to_next
+			uv[i] = point / 0.64
 		else:
 			force_split = true
 			var wall = result.collider as WallBase
@@ -60,7 +60,7 @@ func _physics_process(delta):
 			var normaln = Vector2(tangentn.y, -tangentn.x).normalized()
 			new_point += normaln
 			polygon.insert((i+1)%vertex_num, new_point)
-			uv.insert((i+1)%vertex_num, uv[i])
+			uv.insert((i+1)%vertex_num, new_point/0.64)
 #		if dist_a < min_point_dist:
 #			polygon.remove(i)
 #		if dist_b > max_point_dist:
