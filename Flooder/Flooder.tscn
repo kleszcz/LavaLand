@@ -16,5 +16,5 @@ max_point_dist = 15.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="hot/Area2D"]
 
-[connection signal="mouse_entered" from="hot/Area2D" to="." method="_on_Area2D_mouse_entered"]
-[connection signal="mouse_exited" from="hot/Area2D" to="." method="_on_Area2D_mouse_exited"]
+[connection signal="mouse_entered" from="hot/Area2D" to="hot" method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_exited" from="hot/Area2D" to="hot" method="_on_Area2D_mouse_exited"]
